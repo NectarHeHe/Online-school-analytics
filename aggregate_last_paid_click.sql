@@ -39,10 +39,10 @@ last_clicks as (
 		)
 select 
 	 s.visit_date,
+	 count(s.visitor_id) as visitors_count,
 	 s.source as utm_source,
      s.medium as utm_medium,
      s.campaign as utm_campaign,
-     count(s.visitor_id) as visitors_count,
      am.total_daily as total_cost,
      count(s.lead_id) as leads_count,
      count(case when s.status_id = 142 then 1 else null end) as purchases_count,
