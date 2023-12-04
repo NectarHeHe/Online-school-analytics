@@ -57,7 +57,11 @@ from (
         lc.visitor_id,
         lc.source,
         lc.medium,
-	@@ -61,13 +65,20 @@ from (
+        lc.campaign,
+        lc.lead_id,
+        lc.status_id,
+        lc.amount
+    from
         last_clicks as lc
     where
         rn = 1
