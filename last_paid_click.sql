@@ -15,11 +15,13 @@ with tab as (
         on s.visitor_id = l.visitor_id and visit_date < created_at
     order by visitor_id asc, visit_date desc
 ),
+
 tab_2 as (
     select distinct on (visitor_id) *
     from tab
     where medium != 'organic'
 )
+
 select
     visitor_id,
     visit_date,
@@ -38,4 +40,4 @@ order by
     utm_source asc,
     utm_medium asc,
     utm_campaign asc
-limit 10
+limit 10;
