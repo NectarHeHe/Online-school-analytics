@@ -12,7 +12,8 @@ with tab as (
         l.status_id
     from sessions as s
     left join leads as l
-        on s.visitor_id = l.visitor_id and visit_date < created_at
+        on s.visitor_id = l.visitor_id and visit_date < 
+        created_at
     order by visitor_id asc, visit_date desc
 ),
 
