@@ -44,8 +44,8 @@ order by  count(visitor_id) desc
 	from vk_ads
 	group by utm_source, campaign_date
 	order by utm_source, campaign_date asc 
-	
-	
+
+
 
 with all_marketing as (
 	select 
@@ -238,5 +238,3 @@ from supertab
 
 select sum(revenue) as revenue, sum(total_cost) as total_cost
 from supertab
-
-
