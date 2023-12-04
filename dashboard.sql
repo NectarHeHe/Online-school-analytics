@@ -1,34 +1,9 @@
-select 'visitors' AS stage ,COUNT(DISTINCT visitor_id) as all_count
-from sessions s 
-union
-select 'leads' AS stage, count(distinct lead_id) as leads_count
-from leads l
-union
-select 'Purchases' AS stage, count(case when status_id = 142 then 1 else null end) as pokupka_count
-from leads l
-order by all_count desc
-
-
-SELECT COUNT(DISTINCT visitor_id) as visitors, TO_CHAR(visit_date, 'YYYY-MM-DD') as date
-from sessions
-GROUP BY TO_CHAR(visit_date, 'YYYY-MM-DD')
-
-
-select count(distinct lead_id), TO_CHAR(created_at, 'YYYY-MM-DD')
-from leads l 
-group by TO_CHAR(created_at, 'YYYY-MM-DD')
-
-select count(case when status_id = 142 then 1 else null end) as pokupka_count, TO_CHAR(created_at, 'YYYY-MM-DD') as date
-from leads l 
 group by TO_CHAR(created_at, 'YYYY-MM-DD')
 order by TO_CHAR(created_at, 'YYYY-MM-DD')
-
-
 select  "source"  as utm_source, count(distinct visitor_id) as visitors_count 
 from sessions s 
 group by utm_source
 order by  count(visitor_id) desc
-
 	select 
 		utm_source as utm_source , 
 		sum(daily_spent) as total_daily, 
@@ -44,7 +19,7 @@ order by  count(visitor_id) desc
 	from vk_ads
 	group by utm_source, campaign_date
 	order by utm_source, campaign_date asc
-	
+
 with all_marketing as (
     select
         utm_source,
@@ -262,7 +237,5 @@ select
      round((revenue - total_cost) / total_cost * 100,2) as roi
 from supertab
 
-
 select sum(revenue) as revenue, sum(total_cost) as total_cost
 from supertab
-	
