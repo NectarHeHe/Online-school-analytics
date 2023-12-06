@@ -31,7 +31,7 @@ last_clicks as (
         to_char(s.visit_date, 'YYYY-MM-DD') as visit_date,
         lower(s.source) as source,
         row_number()
-            over (partition by s.visitor_id order by s.visit_date desc)
+        over (partition by s.visitor_id order by s.visit_date desc)
         as rn
     from
         sessions as s
@@ -64,7 +64,7 @@ from (
     from
         last_clicks as lc
     where
-        rn = 1
+        lc.rn = 1
 ) as s
 left join
     all_marketing as am
@@ -76,7 +76,7 @@ group by
     s.visit_date, s.source, s.medium, s.campaign, am.total_daily
 order by
     revenue desc nulls last,
-    visit_date asc,
+    lc.visit_date asc,
     visitors_count desc,
     utm_source asc,
     utm_medium asc,
