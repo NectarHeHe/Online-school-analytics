@@ -23,17 +23,17 @@ tab_2 as (
 )
 
 select
-    visitor_id,
-    visit_date,
-    source as utm_source,
-    medium as utm_medium,
-    campaign as utm_campaign,
-    lead_id,
-    created_at,
-    amount,
-    closing_reason,
-    status_id
-from tab_2
+    t2.visitor_id,
+    t2.visit_date,
+    t2.source as utm_source,
+    t2.medium as utm_medium,
+    t2.campaign as utm_campaign,
+    t2.lead_id,
+    t2.created_at,
+    t2.amount,
+    t2.closing_reason,
+    t2.status_id
+from tab_2 as t2
 order by
     amount desc nulls last,
     visit_date asc,

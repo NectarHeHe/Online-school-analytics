@@ -76,7 +76,7 @@ group by
     s.visit_date, s.source, s.medium, s.campaign, am.total_daily
 order by
     revenue desc nulls last,
-    lc.visit_date asc,
+    s.visit_date asc,
     visitors_count desc,
     utm_source asc,
     utm_medium asc,

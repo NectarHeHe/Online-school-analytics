@@ -1,25 +1,25 @@
 select
     'visitors' as stag,
-    COUNT(distinct visitor_id) as all_count
+    count() (distinct visitor_id) as all_count
 from sessions
 union
 select
     'leads' as stag,
-    COUNT(distinct lead_id) as leads_count
+    count(distinct lead_id) as leads_count
 from leads
 union
 select
     'Purchases' as stag,
-    COUNT(case when status_id = 142 then 1 end) as pokupka_count
+    count(case when status_id = 142 then 1 end) as pokupka_count
 from leads
 order by all_count desc
 
 
-SELECT
-    COUNT(DISTINCT visitor_id) AS visitors,
-    TO_CHAR(visit_date, 'YYYY-MM-DD') AS dat
+select 
+    count(distinct visitor_id) as visitors,
+    to_chat(visit_date, 'YYYY-MM-DD') AS dat
 FROM sessions
-GROUP BY TO_CHAR(visit_date, 'YYYY-MM-DD')
+GROUP BY to_char(visit_date, 'YYYY-MM-DD')
 
 
 select
