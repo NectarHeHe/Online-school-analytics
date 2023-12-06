@@ -15,9 +15,9 @@ from leads
 order by all_count desc
 
 
-select 
-	count(distinct visitor_id) as visitors,
-    to_char(visit_date, 'YYYY-MM-DD') AS dat
+select
+    count(distinct visitor_id) as visitors,
+    to_char(visit_date, 'YYYY-MM-DD') as dat
 from sessions
 group by to_char(visit_date, 'YYYY-MM-DD')
 
