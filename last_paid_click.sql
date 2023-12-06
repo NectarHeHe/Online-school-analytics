@@ -12,8 +12,8 @@ with tab as (
         l.status_id
     from sessions as s
     left join leads as l
-        on s.visitor_id = l.visitor_id and visit_date < created_at
-    order by visitor_id asc, visit_date desc
+        on s.visitor_id = l.visitor_id and s.visit_date < l.created_at
+    order by s.visitor_id asc, s.visit_date desc
 ),
 
 tab_2 as (
@@ -35,9 +35,9 @@ select
     t2.status_id
 from tab_2 as t2
 order by
-    amount desc nulls last,
-    visit_date asc,
-    utm_source asc,
-    utm_medium asc,
-    utm_campaign asc
+    t2.amount desc nulls last,
+    t2.visit_date asc,
+    t2.utm_source asc,
+    t2.utm_medium asc,
+    t2.utm_campaign asc
 limit 10;
