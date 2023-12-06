@@ -1,6 +1,6 @@
 select
     'visitors' as stag,
-    count() (distinct visitor_id) as all_count
+    count(distinct visitor_id) as all_count
 from sessions
 union
 select
@@ -16,8 +16,8 @@ order by all_count desc
 
 
 select 
-    count(distinct visitor_id) as visitors,
-    to_chat(visit_date, 'YYYY-MM-DD') AS dat
+	count(distinct visitor_id) as visitors,
+    to_char(visit_date, 'YYYY-MM-DD') AS dat
 FROM sessions
 GROUP BY to_char(visit_date, 'YYYY-MM-DD')
 
