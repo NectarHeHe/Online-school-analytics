@@ -15,7 +15,7 @@ from leads
 order by all_count desc
 
 
-select
+select 
     count(distinct visitor_id) as visitors,
     to_char(visit_date, 'YYYY-MM-DD') as dat
 from sessions
@@ -27,6 +27,7 @@ select
     to_char(created_at, 'YYYY-MM-DD') as dat
 from leads
 group by to_char(created_at, 'YYYY-MM-DD')
+
 
 select
     count(case when status_id = 142 then 1 end) as pokupka_count,
