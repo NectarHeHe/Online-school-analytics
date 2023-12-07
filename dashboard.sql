@@ -96,7 +96,7 @@ last_clicks as (
         to_char(s.visit_date, 'YYYY-MM-DD') as visit_date,
         lower(s.source) as source,
         row_number()
-            over (partition by s.visitor_id order by s.visit_date desc)
+        over(partition by s.visitor_id order by s.visit_date desc)
         as rn
     from
         sessions as s
@@ -130,7 +130,7 @@ tabley as (
         from
             last_clicks as lc
         where
-            rn = 1
+            lc.rn = 1
     ) as s
     left join
         all_marketing as am
@@ -222,7 +222,7 @@ last_clicks as (
         to_char(s.visit_date, 'YYYY-MM-DD') as visit_date,
         lower(s.source) as source,
         row_number()
-            over (partition by s.visitor_id order by s.visit_date desc)
+        over(partition by s.visitor_id order by s.visit_date desc)
         as rn
     from
         sessions as s
@@ -256,7 +256,7 @@ tabley as (
         from
             last_clicks as lc
         where
-            rn = 1
+            lc.rn = 1
     ) as s
     left join
         all_marketing as am
