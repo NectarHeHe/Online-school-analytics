@@ -12,21 +12,21 @@ select
     'Purchases' as stag,
     count(case when status_id = 142 then 1 end) as pokupka_count
 from leads
-order by all_count desc
+order by all_count desc;
 
 
 select
     count(distinct visitor_id) as visitors,
     to_char(visit_date, 'YYYY-MM-DD') as dat
 from sessions
-group by to_char(visit_date, 'YYYY-MM-DD')
+group by to_char(visit_date, 'YYYY-MM-DD');
 
 
 select
     count(distinct lead_id) as lc,
     to_char(created_at, 'YYYY-MM-DD') as dat
 from leads
-group by to_char(created_at, 'YYYY-MM-DD')
+group by to_char(created_at, 'YYYY-MM-DD');
 
 
 select
@@ -34,7 +34,7 @@ select
     to_char(created_at, 'YYYY-MM-DD') as dat
 from leads
 group by to_char(created_at, 'YYYY-MM-DD')
-order by to_char(created_at, 'YYYY-MM-DD')
+order by to_char(created_at, 'YYYY-MM-DD');
 
 
 select
@@ -42,7 +42,7 @@ select
     count(distinct visitor_id) as visitors_count
 from sessions
 group by utm_source
-order by count(visitor_id) desc
+order by count(visitor_id) desc;
 
 
 select
@@ -59,7 +59,7 @@ select
     to_char(campaign_date, 'YYYY-MM-DD') as campaign_date
 from vk_ads
 group by utm_source, campaign_date
-order by utm_source asc, campaign_date asc
+order by utm_source asc, campaign_date asc;
 
 
 
@@ -186,7 +186,7 @@ select
         end
     ) as cppu,
     round((revenue - total_cost) / total_cost * 100, 2) as roi
-from supertab
+from supertab;
 
 
 with all_marketing as (
@@ -302,10 +302,10 @@ select
         end
     ) as cppu,
     round((revenue - total_cost) / total_cost * 100, 2) as roi
-from supertab
+from supertab;
 
 
 select
     sum(revenue) as revenue,
     sum(total_cost) as total_cost
-from supertab
+from supertab;
