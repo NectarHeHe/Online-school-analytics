@@ -15,7 +15,7 @@ from leads
 order by all_count desc
 
 
-select 
+select
     count(distinct visitor_id) as visitors,
     to_char(visit_date, 'YYYY-MM-DD') as dat
 from sessions
